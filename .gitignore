@@ -1,0 +1,30 @@
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore environment-related files
+.env
+
+# Ignore local development configurations
+instance/
+
+# Ignore editor and IDE specific files
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.swp
+*.swo
+.DS_Store
+.vscode/
+
+# Ignore Flask-related directories
+venv/
+env/
+
+# Ignore configuration files if you have any
+config.cfg
+
+# Ignore dependency directories
+node_modules/
