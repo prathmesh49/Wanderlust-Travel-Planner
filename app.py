@@ -2,8 +2,6 @@ from flask import Flask
 from flask_migrate import Migrate
 from myapp.model import db
 from myapp.business_logic import BusinessLogic
-from flask_restful import Api
-from myapp.resources import DestinationResource
 
 
 # Create a Flask application instance
@@ -17,7 +15,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize SQLAlchemy and Migrate
 db.init_app(app)
 migrate = Migrate(app, db)
-api = Api(app)
 
     
 # Define a route for the home page
@@ -26,7 +23,12 @@ def index():
     result = BusinessLogic.get_welcome_message()
     return result
 
-api.add_resource(DestinationResource, '/destination/<int:destination_id>')
+
+@app.route('/destination')
+def getAllDestinations():
+    result = BusinessLogic.get_destinations()
+    return result
+
 
 # Run the Flask application
 if __name__ == '__main__':
